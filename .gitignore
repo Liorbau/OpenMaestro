@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+
+# Next.js / build output
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Model weights (loaded from HF CDN / browser-cached, never committed)
+*.gguf
+
+# Local tutor progress (per-device, not source)
+data/progress/*
+!data/progress/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Static export output
+/out/
+
+# Vercel
+.vercel
+
+# Standalone design mockup (the real landing lives in components/)
+maestro-landing.html

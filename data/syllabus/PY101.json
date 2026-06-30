@@ -1,0 +1,193 @@
+{
+  "id": "PY101",
+  "title": "Python 101",
+  "description": "A gentle introduction to programming in Python. Five focused lessons that take you from zero to writing useful little scripts.",
+  "track": "SWE",
+  "lessons": [
+    {
+      "id": "py101-01-variables",
+      "title": "Variables and types",
+      "outcomes": [
+        "Declare variables and explain Python's dynamic typing",
+        "Distinguish between int, float, str, and bool",
+        "Convert between types using int(), float(), str(), and bool()"
+      ],
+      "quiz": [
+        {
+          "outcomeIndex": 0,
+          "question": "You write x = 5, then later x = 'hello'. What happens?",
+          "options": [
+            "An error — x was already an int",
+            "x now refers to a string; Python variables aren't locked to one type",
+            "x holds both 5 and 'hello'",
+            "You must declare the type before reassigning"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "kind": "pooled",
+          "outcomeIndex": 1,
+          "question": "Which of these values is a float?",
+          "correct": "3.14",
+          "distractors": ["42", "\"3.14\"", "True", "0", "-5", "\"hello\""],
+          "choose": 4
+        },
+        {
+          "kind": "template",
+          "outcomeIndex": 2,
+          "templateId": "py101-int-add"
+        }
+      ]
+    },
+    {
+      "id": "py101-02-control-flow",
+      "title": "Control flow: if, elif, else",
+      "outcomes": [
+        "Write conditional expressions using comparison and logical operators",
+        "Branch program flow with if / elif / else",
+        "Recognise truthiness rules for common Python values"
+      ],
+      "quiz": [
+        {
+          "kind": "template",
+          "outcomeIndex": 0,
+          "templateId": "py101-bool-and"
+        },
+        {
+          "outcomeIndex": 1,
+          "question": "With x = 5 and: if x > 10: A  elif x > 3: B  else: C — which branch runs?",
+          "options": ["A", "B", "C", "None of them"],
+          "correctIndex": 1
+        },
+        {
+          "kind": "pooled",
+          "outcomeIndex": 2,
+          "question": "Which value is falsy in Python?",
+          "correct": "0",
+          "distractors": ["\"False\" (the string)", "[0]", "-1", "1", "\"0\"", "3.14"],
+          "choose": 4
+        }
+      ]
+    },
+    {
+      "id": "py101-03-loops",
+      "title": "Loops: for and while",
+      "outcomes": [
+        "Iterate over sequences with a for loop using range() and enumerate()",
+        "Use a while loop with a correct exit condition",
+        "Apply break and continue to control loop execution"
+      ],
+      "quiz": [
+        {
+          "kind": "template",
+          "outcomeIndex": 0,
+          "templateId": "py101-range-count"
+        },
+        {
+          "outcomeIndex": 1,
+          "question": "What's the risk in `while True:` with no break inside?",
+          "options": [
+            "It runs zero times",
+            "A syntax error",
+            "An infinite loop",
+            "It runs exactly once"
+          ],
+          "correctIndex": 2
+        },
+        {
+          "outcomeIndex": 2,
+          "question": "Inside a loop, what does `continue` do?",
+          "options": [
+            "Exits the loop entirely",
+            "Skips to the next iteration",
+            "Restarts the whole program",
+            "Pauses until a key is pressed"
+          ],
+          "correctIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "py101-04-functions",
+      "title": "Functions and scope",
+      "outcomes": [
+        "Define functions with positional, keyword, and default arguments",
+        "Return values and understand the difference between return and print",
+        "Explain local vs enclosing vs global scope in plain language"
+      ],
+      "quiz": [
+        {
+          "outcomeIndex": 0,
+          "question": "Given `def greet(name, greeting=\"Hi\"):`, which call is INVALID?",
+          "options": [
+            "greet(\"Sam\")",
+            "greet(\"Sam\", \"Yo\")",
+            "greet(greeting=\"Yo\", name=\"Sam\")",
+            "greet()"
+          ],
+          "correctIndex": 3
+        },
+        {
+          "outcomeIndex": 1,
+          "question": "What's the difference between return and print?",
+          "options": [
+            "Nothing — they do the same thing",
+            "print shows text to the user; return hands a value back to the caller",
+            "return shows text; print hands a value back",
+            "Both end the function and display output"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "outcomeIndex": 2,
+          "question": "A variable assigned inside a function is, by default...",
+          "options": [
+            "Global — visible everywhere",
+            "Local — only visible inside that function",
+            "Automatically returned to the caller",
+            "Shared across all functions"
+          ],
+          "correctIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "py101-05-collections",
+      "title": "Lists, dicts, and comprehensions",
+      "outcomes": [
+        "Create and mutate lists and dictionaries",
+        "Access items by index and by key, and iterate over both",
+        "Write a basic list comprehension and explain when to prefer it over a for loop"
+      ],
+      "quiz": [
+        {
+          "kind": "pooled",
+          "outcomeIndex": 0,
+          "question": "Which correctly adds 3 to the end of `nums = [1, 2]`?",
+          "correct": "nums.append(3)",
+          "distractors": ["nums.add(3)", "nums.push(3)", "nums + 3", "nums.insert(3)", "nums.attach(3)"],
+          "choose": 4
+        },
+        {
+          "kind": "pooled",
+          "outcomeIndex": 1,
+          "question": "For `d = {\"a\": 1}`, how do you read the value 1?",
+          "correct": "d[\"a\"]",
+          "distractors": ["d[0]", "d.a", "d.get(0)", "d->a", "d.value(\"a\")"],
+          "choose": 4
+        },
+        {
+          "outcomeIndex": 2,
+          "question": "Which expression builds the list [0, 1, 4, 9]?",
+          "options": [
+            "[x*x for x in range(4)]",
+            "{x*x for x in range(4)}",
+            "(x*x for x in range(4))",
+            "[x^2 for x in range(4)]"
+          ],
+          "correctIndex": 0
+        }
+      ]
+    }
+  ]
+}

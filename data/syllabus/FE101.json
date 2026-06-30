@@ -1,0 +1,256 @@
+{
+  "id": "FE101",
+  "title": "Frontend Foundations",
+  "description": "Frontend foundations course for Masterschool's internal engineers Bootcamp. Covers TypeScript and React from first principles, ending with a Frontend Chat MVP built in plain React + Vite that the Backend course will plug into in Week 3.",
+  "track": "SWE",
+  "lessons": [
+    {
+      "id": "fe101-01-why-typescript",
+      "title": "Why TypeScript? Types as Documentation and Safety",
+      "outcomes": [
+        "Articulate why TypeScript is preferred over plain JavaScript at scale",
+        "Explain how static types catch bugs before runtime and act as documentation"
+      ]
+    },
+    {
+      "id": "fe101-02-typescript-fundamentals",
+      "title": "TypeScript Fundamentals: Types, Interfaces, Generics",
+      "outcomes": [
+        "Define primitive types, union types, and object types",
+        "Write interfaces and type aliases for real domain models",
+        "Use generics to write a simple generic function or type"
+      ]
+    },
+    {
+      "id": "fe101-03-js-to-ts",
+      "title": "From JavaScript to TypeScript in Practice",
+      "outcomes": [
+        "Convert a small JavaScript module to TypeScript with proper typing",
+        "Avoid any and write explicit return types",
+        "Read and respond to TypeScript compiler errors confidently"
+      ]
+    },
+    {
+      "id": "fe101-04-react-mental-model",
+      "title": "What React Is (And Why It Exists): Components, Declarative UI, Virtual DOM",
+      "outcomes": [
+        "Explain what problem React solves compared to direct DOM manipulation",
+        "Explain components as units of UI and the declarative rendering model"
+      ]
+    },
+    {
+      "id": "fe101-05-vite-setup",
+      "title": "Setting Up a React + TypeScript Project with Vite",
+      "outcomes": [
+        "Scaffold and run a React + TypeScript project using Vite",
+        "Explain the basic project structure and tsconfig settings"
+      ]
+    },
+    {
+      "id": "fe101-06-jsx",
+      "title": "JSX: Markup as Code",
+      "outcomes": [
+        "Read and write JSX with embedded expressions, conditional rendering, and lists",
+        "Explain that JSX is function calls and how it compiles"
+      ]
+    },
+    {
+      "id": "fe101-07-components-props",
+      "title": "Components and Props (Typed)",
+      "outcomes": [
+        "Define functional components with typed props",
+        "Compose components and pass typed data between them",
+        "Use and type children properly"
+      ]
+    },
+    {
+      "id": "fe101-08-use-state",
+      "title": "Component State with useState",
+      "outcomes": [
+        "Manage local component state with useState",
+        "Explain the difference between state and props",
+        "Avoid common pitfalls such as stale state and mutating state directly"
+      ]
+    },
+    {
+      "id": "fe101-09-events-forms",
+      "title": "Handling Events and Forms (Controlled Inputs)",
+      "outcomes": [
+        "Wire event handlers with proper TypeScript typing",
+        "Build a controlled form with multiple inputs and validation"
+      ]
+    },
+    {
+      "id": "fe101-10-use-effect",
+      "title": "Side Effects with useEffect (And When to Avoid Them)",
+      "outcomes": [
+        "Use useEffect for genuine side effects such as subscriptions, fetches, and timers",
+        "Explain the dependency array and cleanup functions",
+        "Identify common anti-patterns and when not to reach for useEffect"
+      ]
+    },
+    {
+      "id": "fe101-11-lifting-state",
+      "title": "Lifting State Up and Sharing State Between Components",
+      "outcomes": [
+        "Identify when state should be lifted to a common ancestor",
+        "Refactor a multi-component feature so state lives in the right place"
+      ]
+    },
+    {
+      "id": "fe101-12-composition-patterns",
+      "title": "Composition Patterns: Children, Slots, Compound Components",
+      "outcomes": [
+        "Build flexible reusable components using children and render-prop style composition",
+        "Prefer composition over configuration props for reusability"
+      ]
+    },
+    {
+      "id": "fe101-13-custom-hooks",
+      "title": "Custom Hooks: Extracting and Reusing Logic",
+      "outcomes": [
+        "Extract stateful logic into a custom hook with a clean API",
+        "Explain the rules of hooks and why they exist"
+      ]
+    },
+    {
+      "id": "fe101-14-context-api",
+      "title": "Context API: Sharing State Without Prop Drilling",
+      "outcomes": [
+        "Create and consume a Context with proper TypeScript typing",
+        "Explain when Context is the right tool versus when it is overkill"
+      ]
+    },
+    {
+      "id": "fe101-15-todos-project",
+      "title": "Final Project - React + TypeScript Todos App",
+      "outcomes": [
+        "Build a typed React app from scratch using Vite",
+        "Demonstrate clean component decomposition, lifted state, and at least one custom hook",
+        "Deliver the project as a GitHub PR with passing TypeScript compilation"
+      ]
+    },
+    {
+      "id": "fe101-16-clean-code-react",
+      "title": "Clean Code Principles for React Components",
+      "outcomes": [
+        "Identify smells in React components such as long files, mixed concerns, and deep nesting",
+        "Refactor a messy component into smaller, single-responsibility units"
+      ]
+    },
+    {
+      "id": "fe101-17-component-architecture",
+      "title": "Component Architecture: Container vs Presentational, Pure Components",
+      "outcomes": [
+        "Separate stateful container components from pure presentational components",
+        "Explain why pure components are easier to test and reuse"
+      ]
+    },
+    {
+      "id": "fe101-18-use-reducer",
+      "title": "useReducer: When State Logic Outgrows useState",
+      "outcomes": [
+        "Model state as actions and a reducer for non-trivial flows",
+        "Explain when useReducer is preferable to multiple useState hooks"
+      ]
+    },
+    {
+      "id": "fe101-19-memoization",
+      "title": "Performance: When and Why to Use useMemo and useCallback",
+      "outcomes": [
+        "Identify the cost of unnecessary re-renders",
+        "Apply useMemo and useCallback only where they actually help",
+        "Measure render behavior with the React DevTools Profiler"
+      ]
+    },
+    {
+      "id": "fe101-20-react-memo",
+      "title": "React.memo and Re-render Behavior",
+      "outcomes": [
+        "Explain React reconciliation and what triggers re-renders",
+        "Apply React.memo to expensive presentational components when justified"
+      ]
+    },
+    {
+      "id": "fe101-21-data-fetching",
+      "title": "Fetching Data from APIs in React",
+      "outcomes": [
+        "Call a REST API from React and store the result in state",
+        "Cancel stale requests and avoid race conditions"
+      ]
+    },
+    {
+      "id": "fe101-22-ui-states",
+      "title": "Handling Loading, Empty, and Error States Cleanly",
+      "outcomes": [
+        "Handle loading, empty, success, and error states explicitly in async UIs",
+        "Write predictable UIs for users even when the network fails"
+      ]
+    },
+    {
+      "id": "fe101-23-chat-ui-design",
+      "title": "Designing a Chat UI: Components and Data Flow",
+      "outcomes": [
+        "Decompose a chat UI into a clean component tree",
+        "Design typed data shapes for users, conversations, and messages on the frontend"
+      ]
+    },
+    {
+      "id": "fe101-24-message-list-composer",
+      "title": "Building the Message List and Message Composer",
+      "outcomes": [
+        "Implement an auto-scrolling message list with proper key handling",
+        "Implement a message composer with controlled input and submit-on-Enter"
+      ]
+    },
+    {
+      "id": "fe101-25-optimistic-updates",
+      "title": "Optimistic Updates and Local State Sync",
+      "outcomes": [
+        "Apply optimistic updates for fast-feeling UIs",
+        "Handle rollback when the server rejects an optimistic action"
+      ]
+    },
+    {
+      "id": "fe101-26-api-mocking",
+      "title": "Mocking a Backend API for Frontend Development",
+      "outcomes": [
+        "Build a mocked REST API on the frontend that matches the real backend contract",
+        "Design the contract first so frontend and backend can develop in parallel"
+      ]
+    },
+    {
+      "id": "fe101-27-testing-basics",
+      "title": "Frontend Testing Fundamentals (Vitest + React Testing Library)",
+      "outcomes": [
+        "Explain the testing pyramid and what is worth testing on the frontend",
+        "Set up Vitest + React Testing Library in a Vite project"
+      ]
+    },
+    {
+      "id": "fe101-28-component-hook-testing",
+      "title": "Writing Tests for Components and Custom Hooks",
+      "outcomes": [
+        "Write tests that interact with components from the user's perspective",
+        "Test a custom hook in isolation"
+      ]
+    },
+    {
+      "id": "fe101-29-chat-refactoring",
+      "title": "Reviewing and Refactoring: Clean Code Pass on the Chat MVP",
+      "outcomes": [
+        "Review code critically against Clean Code principles",
+        "Apply targeted refactors that improve readability and maintainability without changing behavior"
+      ]
+    },
+    {
+      "id": "fe101-30-chat-mvp-project",
+      "title": "Final Project - Frontend Chat MVP (React + Vite + Mocked API)",
+      "outcomes": [
+        "Ship a Frontend Chat MVP using React + Vite + TypeScript against a mocked API contract",
+        "Demonstrate clean component architecture, explicit loading/error/empty states, and at least one custom hook",
+        "Deliver the project as a GitHub PR with passing tests and TypeScript compilation"
+      ]
+    }
+  ]
+}

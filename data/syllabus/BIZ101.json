@@ -1,0 +1,183 @@
+{
+  "id": "BIZ101",
+  "title": "Business 101",
+  "description": "The core business toolkit for founders and operators: sizing a market, unit economics, SaaS metrics, and going to market — taught the way you'll actually use it.",
+  "track": "Biz",
+  "lessons": [
+    {
+      "id": "biz101-01-market-sizing",
+      "title": "Market sizing: TAM, SAM, SOM",
+      "outcomes": [
+        "Define TAM, SAM, and SOM and how they nest",
+        "Recognise that SOM must be a realistic subset of SAM, not all of it",
+        "Distinguish top-down from bottom-up market sizing"
+      ],
+      "quiz": [
+        {
+          "outcomeIndex": 0,
+          "question": "Order these from largest to smallest.",
+          "options": [
+            "TAM > SAM > SOM",
+            "SOM > SAM > TAM",
+            "SAM > TAM > SOM",
+            "They are all equal"
+          ],
+          "correctIndex": 0
+        },
+        {
+          "outcomeIndex": 1,
+          "question": "A founder sets SOM equal to the entire SAM (100% in year one). What's wrong?",
+          "options": [
+            "Nothing — aim high",
+            "SOM should be a realistic slice you can actually win, not the whole market",
+            "SOM must be larger than SAM",
+            "SAM should equal TAM"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "kind": "pooled",
+          "outcomeIndex": 2,
+          "question": "Estimating the market as (number of buyers × price per buyer) is which approach?",
+          "correct": "Bottom-up",
+          "distractors": ["Top-down", "Outside-in", "Backward", "Break-even"],
+          "choose": 4
+        }
+      ]
+    },
+    {
+      "id": "biz101-02-gross-margin",
+      "title": "Unit economics: gross margin",
+      "outcomes": [
+        "Compute gross margin as (price − cost) / price",
+        "Explain why the denominator is price, not cost (margin vs markup)"
+      ],
+      "quiz": [
+        {
+          "kind": "template",
+          "outcomeIndex": 0,
+          "templateId": "biz-gross-margin"
+        },
+        {
+          "outcomeIndex": 1,
+          "question": "Gross margin divides profit by which of these?",
+          "options": [
+            "Cost to make it",
+            "Price (revenue)",
+            "Profit",
+            "Units sold"
+          ],
+          "correctIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "biz101-03-ltv-cac",
+      "title": "Unit economics: LTV and CAC payback",
+      "outcomes": [
+        "State the LTV formula: ARPU × gross margin % × average lifespan",
+        "Define CAC and the CAC payback period",
+        "Explain why a shorter payback is better for cash flow"
+      ],
+      "quiz": [
+        {
+          "kind": "pooled",
+          "outcomeIndex": 0,
+          "question": "LTV ≈ ARPU × gross margin % × ___",
+          "correct": "average customer lifespan",
+          "distractors": [
+            "number of employees",
+            "total addressable market",
+            "monthly churn count",
+            "the discount rate",
+            "annual revenue"
+          ],
+          "choose": 4
+        },
+        {
+          "outcomeIndex": 1,
+          "question": "CAC is…",
+          "options": [
+            "Revenue per customer",
+            "What you spend to acquire one customer (sales + marketing ÷ new customers)",
+            "A customer's lifetime value",
+            "The cost to build the product"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "outcomeIndex": 2,
+          "question": "A shorter CAC payback period is…",
+          "options": [
+            "Worse — you earn less overall",
+            "Better — you recover the acquisition cost faster, easing cash flow",
+            "Irrelevant to cash flow",
+            "Only about profit, never cash"
+          ],
+          "correctIndex": 1
+        }
+      ]
+    },
+    {
+      "id": "biz101-04-churn",
+      "title": "SaaS metrics: churn and retention",
+      "outcomes": [
+        "Define churn as the % of customers who cancel in a period",
+        "Compute a simple churn rate"
+      ],
+      "quiz": [
+        {
+          "outcomeIndex": 0,
+          "question": "Churn measures…",
+          "options": [
+            "Customers who stay",
+            "Customers who cancel or stop paying in a period",
+            "New signups this month",
+            "Total revenue growth"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "outcomeIndex": 1,
+          "question": "You started the month with 200 customers and 10 cancelled. What's the monthly churn rate?",
+          "options": ["5%", "10%", "2%", "20%"],
+          "correctIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "biz101-05-gtm-pricing",
+      "title": "Go-to-market and pricing",
+      "outcomes": [
+        "Describe a go-to-market motion as a target segment plus a channel to reach them",
+        "Contrast value-based pricing with cost-plus pricing"
+      ],
+      "quiz": [
+        {
+          "outcomeIndex": 0,
+          "question": "A basic go-to-market motion pairs…",
+          "options": [
+            "A product with a competitor",
+            "A target segment with a channel to reach them",
+            "A price with a discount",
+            "A feature with a deadline"
+          ],
+          "correctIndex": 1
+        },
+        {
+          "kind": "pooled",
+          "outcomeIndex": 1,
+          "question": "Value-based pricing sets the price based on…",
+          "correct": "the value the customer gets",
+          "distractors": [
+            "what it costs you to deliver",
+            "a fixed 20% markup",
+            "the cheapest competitor",
+            "the number of features"
+          ],
+          "choose": 4
+        }
+      ]
+    }
+  ]
+}
