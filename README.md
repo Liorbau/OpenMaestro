@@ -33,6 +33,14 @@ pnpm test           # unit tests (progress, verifier)
 pnpm test:e2e       # Playwright: offline + persistence
 ```
 
+## Architecture
+
+![OpenMaestro architecture](docs/architecture.png)
+
+Everything runs in the user's browser — two CDNs seed it once (app + lessons, model weights),
+then the teaching engine, the on-device model, and browser storage do the rest. No server,
+no database.
+
 ## How it's $0 by design
 
 - **Inference on-device** via [wllama](https://github.com/ngxson/wllama) (llama.cpp / WASM),
