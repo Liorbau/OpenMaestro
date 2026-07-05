@@ -1,0 +1,255 @@
+<title>OpenMaestro — pitch</title>
+<style>
+  :root{
+    --ground:#0B0B0D; --surface:#15141B; --surface2:#211F2B;
+    --cream:#F5F4EF; --dim:rgba(245,244,239,.62); --faint:rgba(245,244,239,.40);
+    --lav:#A6B2F7; --lav-ink:#2F3B9E; --lav-soft:rgba(166,178,247,.13);
+    --line:rgba(245,244,239,.13);
+    --serif:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--ground); color:var(--cream); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased; overflow:hidden;
+  }
+  /* atmosphere */
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(48% 40% at 15% 6%, rgba(166,178,247,.16), transparent 70%),
+      radial-gradient(42% 38% at 86% 12%, rgba(120,150,230,.12), transparent 72%),
+      radial-gradient(70% 55% at 50% 118%, rgba(166,178,247,.10), transparent 72%);}
+
+  /* deck frame */
+  .deck{position:relative;z-index:2;height:100vh;width:100vw}
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(28px,7vw,110px);opacity:0;transform:translateY(14px);
+    pointer-events:none;visibility:hidden}
+  .slide.active{opacity:1;transform:none;pointer-events:auto;visibility:visible}
+  @media (prefers-reduced-motion: no-preference){
+    .slide{transition:opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1)}
+  }
+  .wrap{max-width:1000px;width:100%;margin:0 auto}
+
+  /* type */
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--lav);margin:0 0 1.1rem}
+  h1{font-family:var(--serif);font-weight:400;line-height:1.04;letter-spacing:-.015em;
+    text-wrap:balance;margin:0;font-size:clamp(2.1rem,5.4vw,4rem)}
+  .lead{color:var(--dim);font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.55;
+    max-width:60ch;margin:1.6rem 0 0}
+  .lead strong{color:var(--cream);font-weight:600}
+  .accent{color:var(--lav)}
+
+  /* header + footer chrome */
+  .brand{position:fixed;top:26px;left:30px;z-index:5;display:flex;align-items:center;gap:11px}
+  .brand svg{width:26px;height:29px;display:block}
+  .brand .name{font-family:var(--serif);font-size:1.15rem;letter-spacing:.01em}
+  .count{position:fixed;top:30px;right:32px;z-index:5;font-family:var(--mono);
+    font-size:.78rem;color:var(--faint);font-variant-numeric:tabular-nums}
+  .ctrl{position:fixed;bottom:26px;right:30px;z-index:5;display:flex;align-items:center;gap:14px}
+  .dots{display:flex;gap:9px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:0;padding:0;cursor:pointer;
+    transition:background .3s,transform .3s}
+  .dot.on{background:var(--lav);transform:scale(1.25)}
+  .dot:focus-visible{outline:2px solid var(--lav);outline-offset:3px}
+  .nav{display:flex;gap:8px}
+  .nav button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
+    background:transparent;color:var(--cream);font-size:1rem;cursor:pointer;
+    display:grid;place-items:center;transition:background .2s,border-color .2s}
+  .nav button:hover{background:var(--lav-soft);border-color:var(--lav)}
+  .nav button:focus-visible{outline:2px solid var(--lav);outline-offset:3px}
+  .hint{position:fixed;bottom:30px;left:30px;z-index:5;font-family:var(--mono);
+    font-size:.72rem;color:var(--faint)}
+
+  /* title slide */
+  .title{text-align:center;align-items:center}
+  .title .mark{width:74px;height:83px;margin:0 auto 1.4rem;display:block}
+  .title .word{font-family:var(--serif);font-size:clamp(3.4rem,10vw,6.4rem);line-height:1;
+    letter-spacing:-.02em}
+  .title .sub{color:var(--dim);font-size:clamp(1.05rem,1.9vw,1.4rem);margin:1.5rem auto 0;max-width:42ch}
+  .title .url{margin-top:2.3rem;font-family:var(--mono);font-size:.85rem;color:var(--lav);
+    border:1px solid var(--line);border-radius:999px;padding:.5rem 1.1rem;display:inline-block}
+
+  /* bullet list */
+  ul.pts{list-style:none;margin:1.9rem 0 0;padding:0;display:flex;flex-direction:column;gap:1.05rem;max-width:64ch}
+  ul.pts li{position:relative;padding-left:1.6rem;color:var(--dim);font-size:clamp(1rem,1.45vw,1.18rem);line-height:1.5}
+  ul.pts li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;
+    background:var(--lav)}
+  ul.pts li strong{color:var(--cream);font-weight:600}
+  .foot{color:var(--faint);font-size:.95rem;margin-top:1.8rem;font-style:italic}
+
+  /* architecture */
+  .arch{display:flex;align-items:center;gap:clamp(14px,3vw,40px);margin-top:2rem;flex-wrap:wrap}
+  .ext{display:flex;flex-direction:column;gap:14px}
+  .chip{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.75rem 1rem;
+    min-width:170px}
+  .chip b{display:block;font-size:.98rem}
+  .chip span{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+  .seed{font-family:var(--mono);font-size:.74rem;color:var(--lav);letter-spacing:.05em;white-space:nowrap}
+  .browser{flex:1;min-width:280px;border:1.5px dashed var(--line);border-radius:16px;
+    padding:clamp(16px,2vw,24px);background:rgba(255,255,255,.02)}
+  .browser .bl{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.06em;
+    text-transform:uppercase;margin-bottom:.9rem}
+  .stack{display:flex;flex-direction:column;align-items:stretch;gap:.35rem}
+  .node{border:1px solid var(--line);border-radius:11px;padding:.7rem .95rem;text-align:center;
+    background:var(--surface);font-size:1rem}
+  .node.hot{border-color:var(--lav);color:var(--lav);background:var(--lav-soft);font-weight:600}
+  .node small{color:var(--faint);font-family:var(--mono);font-size:.68rem;display:block}
+  .conn{text-align:center;color:var(--lav);font-size:.9rem;line-height:1}
+  .arch-cap{color:var(--dim);font-size:1.05rem;margin-top:1.9rem;max-width:60ch}
+
+  /* close */
+  .close{text-align:center;align-items:center}
+  .close h1{font-size:clamp(2.2rem,6vw,4.4rem)}
+  .close .row{margin-top:1.8rem;display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap;
+    font-family:var(--mono);font-size:.85rem;color:var(--dim);letter-spacing:.03em}
+  .close .row span{color:var(--lav)}
+
+  @media (max-width:640px){
+    .brand,.hint{display:none}
+    .seed{transform:rotate(90deg)}
+  }
+</style>
+
+<canvas id="stars"></canvas>
+<div class="aurora"></div>
+
+<div class="brand">
+  <svg viewBox="0 0 200 224" aria-hidden="true"><path d="M100 12 C126 12 150 15 166 21 C179 26 186 34 186 52 C186 74 186 96 178 124 C169 156 143 188 100 210 C57 188 31 156 22 124 C14 96 14 74 14 52 C14 34 21 26 34 21 C50 15 74 12 100 12 Z" fill="#F5F4EF"/><g fill="#0B0B0D"><rect x="66" y="64" width="20" height="20" rx="1.5"/><rect x="114" y="64" width="20" height="20" rx="1.5"/><rect x="42" y="88" width="20" height="20" rx="1.5"/><rect x="90" y="88" width="20" height="20" rx="1.5"/><rect x="138" y="88" width="20" height="20" rx="1.5"/><rect x="66" y="112" width="20" height="20" rx="1.5"/><rect x="114" y="112" width="20" height="20" rx="1.5"/><rect x="90" y="136" width="20" height="20" rx="1.5"/></g></svg>
+  <span class="name">OpenMaestro</span>
+</div>
+<div class="count"><span id="cur">1</span> / <span id="tot">7</span></div>
+<div class="hint">← → to move</div>
+
+<main class="deck" id="deck">
+
+  <section class="slide title active">
+    <div class="wrap">
+      <svg class="mark" viewBox="0 0 200 224" aria-hidden="true"><path d="M100 12 C126 12 150 15 166 21 C179 26 186 34 186 52 C186 74 186 96 178 124 C169 156 143 188 100 210 C57 188 31 156 22 124 C14 96 14 74 14 52 C14 34 21 26 34 21 C50 15 74 12 100 12 Z" fill="#F5F4EF"/><g fill="#0B0B0D"><rect x="66" y="64" width="20" height="20" rx="1.5"/><rect x="114" y="64" width="20" height="20" rx="1.5"/><rect x="42" y="88" width="20" height="20" rx="1.5"/><rect x="90" y="88" width="20" height="20" rx="1.5"/><rect x="138" y="88" width="20" height="20" rx="1.5"/><rect x="66" y="112" width="20" height="20" rx="1.5"/><rect x="114" y="112" width="20" height="20" rx="1.5"/><rect x="90" y="136" width="20" height="20" rx="1.5"/></g></svg>
+      <div class="word">maestro</div>
+      <p class="sub">An open, <strong style="color:var(--cream)">$0-per-user</strong> AI tutor that runs entirely in your browser. <span class="accent">Everyone, everywhere.</span></p>
+      <div class="url">openmaestro.vercel.app</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The one hard rule</p>
+      <h1>It can't cost us money<br>when a new user shows up.</h1>
+      <p class="lead"><strong>$0 COGS.</strong> No cloud LLM bill per lesson, no per-user server. So the model has to run on the <strong>user's own device</strong> — and that single rule drives every decision in the product.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The insight</p>
+      <h1>The tutor's failures are about <span class="accent">discipline</span>, not IQ.</h1>
+      <p class="lead">The scenarios Maestro slips on aren't knowledge tests — "don't leak the answer," "don't rubber-stamp wrong work," "catch the discouraged student." A small model fails these for lack of discipline, and <strong>discipline we can engineer.</strong> The $0 constraint becomes the strength.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">Architecture</p>
+      <h1>No server. No database. <span class="accent">$0.</span></h1>
+      <div class="arch">
+        <div class="ext">
+          <div class="chip"><b>Vercel CDN</b><span>app + lessons</span></div>
+          <div class="chip"><b>Hugging Face</b><span>model weights</span></div>
+        </div>
+        <div class="seed">seed once →</div>
+        <div class="browser">
+          <div class="bl">Your browser · any device</div>
+          <div class="stack">
+            <div class="node hot">Teaching Engine</div>
+            <div class="conn">⇅</div>
+            <div class="node">On-device LLM<small>wllama · WASM · CPU</small></div>
+            <div class="conn">⇅</div>
+            <div class="node">Browser storage<small>progress + model cache</small></div>
+          </div>
+        </div>
+      </div>
+      <p class="arch-cap">Every learner brings their own compute → it scales to the planet on a free tier, and works offline after the first visit.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The differentiator</p>
+      <h1>A discipline layer around a small model.</h1>
+      <ul class="pts">
+        <li><strong>Always-on prompt discipline</strong> — explain don't dump, signal every shift, show before you test.</li>
+        <li><strong>Per-turn skills</strong> — empathy on distress, a nudge in a challenge, never rubber-stamp wrong work, exact math.</li>
+        <li><strong>A $0 verifier</strong> — checks the model's own arithmetic and blocks answer-leaks, in code.</li>
+        <li><strong>A mastery quiz</strong> — objective, no self-marking; the lesson only completes when it's passed.</li>
+      </ul>
+      <p class="foot">Measured with a reproducible in-browser eval — the engine lifts the model on the exact scenarios that matter.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <p class="eyebrow">The business</p>
+      <h1>Learning is free.<br>The <span class="accent">credential</span> is paid.</h1>
+      <p class="lead">Teaching costs us <strong>$0</strong> — it runs on the learner's device — so we give it away. Revenue comes from the paid credential (the "stamp") and premium exam-prep marathons. <strong>Tech and business reinforce each other:</strong> free-to-run is why free-to-learn scales.</p>
+    </div>
+  </section>
+
+  <section class="slide close">
+    <div class="wrap">
+      <h1>Everyone, everywhere,<br>in great quality.</h1>
+      <div class="row"><div>Live today</div><span>·</span><div>$0 per user</div><span>·</span><div>works offline</div></div>
+      <div class="url" style="margin-top:2rem">openmaestro.vercel.app</div>
+    </div>
+  </section>
+
+</main>
+
+<div class="ctrl">
+  <div class="dots" id="dots"></div>
+  <div class="nav"><button id="prev" aria-label="Previous slide">‹</button><button id="next" aria-label="Next slide">›</button></div>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dotsWrap=document.getElementById('dots');
+  var cur=document.getElementById('cur'), tot=document.getElementById('tot');
+  var i=0; tot.textContent=slides.length;
+  slides.forEach(function(_,n){
+    var b=document.createElement('button'); b.className='dot'+(n===0?' on':'');
+    b.setAttribute('aria-label','Go to slide '+(n+1));
+    b.addEventListener('click',function(){go(n)}); dotsWrap.appendChild(b);
+  });
+  var dots=[].slice.call(dotsWrap.children);
+  function go(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('active',k===i)});
+    dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
+    cur.textContent=i+1;
+  }
+  document.getElementById('next').addEventListener('click',function(){go(i+1)});
+  document.getElementById('prev').addEventListener('click',function(){go(i-1)});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+    else if(e.key==='Home'){go(0)} else if(e.key==='End'){go(slides.length-1)}
+  });
+
+  // static starfield
+  var c=document.getElementById('stars'), x=c.getContext('2d'), seed=20250701;
+  function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff}
+  function draw(){
+    var w=c.width=innerWidth, h=c.height=innerHeight; x.clearRect(0,0,w,h); seed=20250701;
+    for(var k=0;k<70;k++){
+      var px=rnd()*w, py=rnd()*h*0.85, r=rnd()<0.18?1.6:0.9, a=0.12+rnd()*0.4;
+      x.beginPath(); x.arc(px,py,r,0,7); x.fillStyle='rgba(237,239,246,'+a.toFixed(2)+')'; x.fill();
+    }
+  }
+  draw(); addEventListener('resize',draw);
+})();
+</script>
